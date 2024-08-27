@@ -30,7 +30,8 @@
     "test:br": "npx http-server dist --cors --brotli -c-1",
     "reinstall": "rimraf pnpm-lock.yaml && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
     "prepare": "husky install",
-    "gen:icon": "esno ./build/generate/icon/index.ts"
+    "gen:icon": "esno ./build/generate/icon/index.ts",
+    "deploy": "cross-env NODE_ENV=production vite build && esno ./build/script/postBuild.ts && scp -r ./dist root@8.155.163.128:/usr/local/src/wechaty-admin"
   },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
